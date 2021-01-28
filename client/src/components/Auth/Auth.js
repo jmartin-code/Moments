@@ -1,0 +1,8 @@
+import React from "react";
+
+const Auth = () => {
+  const state = null;
+  return <div>Authorization</div>;
+};
+
+export default Auth;
