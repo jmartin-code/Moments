@@ -4,6 +4,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import moments from "../../images/moments.jpg";
 import useStyles from "./styles";
 import { useDispatch } from "react-redux";
+import decode from "jwt-decode";
 
 const Navbar = () => {
   const classes = useStyles();
@@ -14,6 +15,14 @@ const Navbar = () => {
 
   useEffect(() => {
     const token = user?.token;
+
+    if (token) {
+      const decodedToken = decode(token);
+
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        logout();
+      }
+    }
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
@@ -31,7 +40,7 @@ const Navbar = () => {
           className={classes.image}
           src={moments}
           alt="memories"
-          height="25"
+          height="30"
         />
         <Typography
           component={Link}
@@ -42,12 +51,12 @@ const Navbar = () => {
         >
           &nbsp;MOMENTS&nbsp;
         </Typography>
-        <img
+        {/* <img
           className={classes.image}
           src={moments}
           alt="memories"
           height="25"
-        />
+        /> */}
       </div>
       <Toolbar className={classes.toolbar}>
         {user ? (

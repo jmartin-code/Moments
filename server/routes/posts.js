@@ -7,6 +7,8 @@ import {
   likePost,
 } from "../controllers/posts.js";
 
+import auth from "../middleware/auth.js";
+
 //import mongoose model
 import PostMessage from "../models/postMessage.js";
 
@@ -15,12 +17,12 @@ const router = express.Router();
 //Get
 router.get("/", getPosts);
 //Post
-router.post("/", createPost);
+router.post("/", auth, createPost);
 //Update
-router.patch("/:id", updatePost);
+router.patch("/:id", auth, updatePost);
 //Delete
-router.delete("/:id", deletePost);
+router.delete("/:id", auth, deletePost);
 //Like post count
-router.patch("/:id/likePost", likePost);
+router.patch("/:id/likePost", auth, likePost);
 
 export default router;

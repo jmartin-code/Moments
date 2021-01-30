@@ -16,7 +16,7 @@ const Home = () => {
   }, [currentId, dispatch]);
   return (
     <Grow in>
-      <Container>
+      <Container maxWidth={false}>
         <Grid
           className={classes.mainContainer}
           container
@@ -24,10 +24,10 @@ const Home = () => {
           alignItems="stretch"
           spacing={3}
         >
-          <Grid item xs={12} sm={7}>
+          <Grid item xs={12} sm={8} lg={4}>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} sm={8} lg={3}>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
           </Grid>
         </Grid>

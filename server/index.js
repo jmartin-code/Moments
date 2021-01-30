@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 
 //import posts routes
 import postRoutes from "./routes/posts.js";
+import userRoutes from "./routes/users.js";
 
 //initialize app instance
 const app = express();
@@ -20,6 +21,8 @@ app.use(cors());
 
 //set post routes prefix to posts
 app.use("/posts", postRoutes);
+//set user routes
+app.use("/users", userRoutes);
 
 //Greeting message for API
 app.get("/", (req, res) => {
