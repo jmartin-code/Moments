@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 //create mongoose databse schema
 const postSchema = mongoose.Schema({
-  title: String,
-  message: String,
+  title: { type: String, required: true },
+  message: { type: String, required: true },
   name: String,
   creator: String,
   tags: [String],

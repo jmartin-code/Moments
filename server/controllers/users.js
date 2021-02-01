@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
     const result = await User.create({
       email,
       password: hashpass,
-      name: `${firstname} ${lastname}`,
+      name: `${firstname}, ${lastname}`,
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, "test", {

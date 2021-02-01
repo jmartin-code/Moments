@@ -40,7 +40,7 @@ const Navbar = () => {
           className={classes.image}
           src={moments}
           alt="memories"
-          height="30"
+          height="35"
         />
         <Typography
           component={Link}
@@ -51,12 +51,6 @@ const Navbar = () => {
         >
           &nbsp;MOMENTS&nbsp;
         </Typography>
-        {/* <img
-          className={classes.image}
-          src={moments}
-          alt="memories"
-          height="25"
-        /> */}
       </div>
       <Toolbar className={classes.toolbar}>
         {user ? (
@@ -69,7 +63,7 @@ const Navbar = () => {
               {user.result.name.charAt(0)}
             </Avatar>
             <Typography className={classes.userName} variant="h6">
-              {user.result.name}
+              &nbsp; {user.result.name} &nbsp;
             </Typography>
             <Button
               className={classes.logout}

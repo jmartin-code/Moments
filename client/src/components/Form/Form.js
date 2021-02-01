@@ -30,13 +30,12 @@ export default function Form({ currentId, setCurrentId }) {
 
     if (currentId === 0) {
       dispatch(createPost({ ...postData, name: user?.result?.name }));
-      clear();
     } else {
       dispatch(
         updatePost(currentId, { ...postData, name: user?.result?.name })
       );
-      clear();
     }
+    clear();
   };
 
   const clear = () => {
@@ -63,13 +62,13 @@ export default function Form({ currentId, setCurrentId }) {
     <Paper className={classes.paper}>
       <form
         autoComplete="off"
-        noValidate
+        // noValidate
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
           <Box fontWeight="fontWeightBold">
-            {currentId ? "Update" : "Create"} Moment
+            {currentId ? "Update Existing" : "Add Your New"} Moment
           </Box>
         </Typography>
 
@@ -80,16 +79,20 @@ export default function Form({ currentId, setCurrentId }) {
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+          required
         />
         <TextField
           name="message"
           variant="outlined"
           label="Message"
+          multiline
+          autoFocus
           fullWidth
           value={postData.message}
           onChange={(e) =>
             setPostData({ ...postData, message: e.target.value })
           }
+          required
         />
         <TextField
           name="tags"

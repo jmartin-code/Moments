@@ -17,9 +17,13 @@ import { signin, signup } from "../../actions/auth";
 import useStyles from "./styles";
 import { useHistory } from "react-router-dom";
 
+// require("dotenv").config();
+// import dotenv from "dotenv";
+// dotenv.config();
+
 const initialForm = {
-  firstName: "",
-  lastName: "",
+  firstname: "",
+  lastname: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -32,6 +36,7 @@ const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [form, setForm] = useState(initialForm);
+  const CLIENT_ID = process.env.CLIENT_ID;
 
   const handleShowPass = () => {
     setShowPass((prevShowPass) => !prevShowPass);
@@ -92,7 +97,7 @@ const Auth = () => {
                   half
                 />
                 <Input
-                  name="lasstname"
+                  name="lastname"
                   label="Last Name"
                   handleChange={handleChange}
                   half
@@ -131,7 +136,7 @@ const Auth = () => {
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
           <GoogleLogin
-            clientId="918408654225-dj9n9rjo99csq6h9nu4in3v23rtdibed.apps.googleusercontent.com"
+            clientId={process.env.REACT_APP_CLIENT_ID}
             render={(renderProps) => (
               <Button
                 className={classes.googleButton}
@@ -151,11 +156,21 @@ const Auth = () => {
           />
           <Grid container justify="flex-end">
             <Grid item>
-              <Button onClick={switchMode}>
-                {isSignUp
-                  ? "If you have an account, click here to Sign In"
-                  : "If you dont have an account, click here to Sing Up"}
-              </Button>
+              {isSignUp ? (
+                <Typography variant="body1">
+                  Have an account, please &nbsp;
+                  <Button onClick={switchMode} variant="outlined">
+                    Sign In
+                  </Button>
+                </Typography>
+              ) : (
+                <Typography variant="body1">
+                  Don't Have an account, please &nbsp;
+                  <Button onClick={switchMode} variant="outlined">
+                    Sign Up{" "}
+                  </Button>
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </form>

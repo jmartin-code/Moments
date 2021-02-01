@@ -22,12 +22,12 @@ const Home = () => {
           container
           justify="space-between"
           alignItems="stretch"
-          spacing={3}
+          spacing={10}
         >
-          <Grid item xs={12} sm={8} lg={4}>
+          <Grid item sm>
             <Posts setCurrentId={setCurrentId} />
           </Grid>
-          <Grid item xs={12} sm={8} lg={3}>
+          <Grid item xs>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
           </Grid>
         </Grid>
