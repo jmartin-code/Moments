@@ -9,9 +9,6 @@ import {
 
 import auth from "../middleware/auth.js";
 
-//import mongoose model
-import PostMessage from "../models/postMessage.js";
-
 const router = express.Router();
 
 //Get
