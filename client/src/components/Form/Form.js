@@ -86,6 +86,7 @@ export default function Form({ currentId, setCurrentId }) {
           variant="outlined"
           label="Message"
           multiline
+          rows={4}
           autoFocus
           fullWidth
           value={postData.message}
