@@ -1,13 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  Avatar,
-  Button,
-  Paper,
-  Grid,
-  Typography,
-  Container,
-} from "@material-ui/core";
+import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input";
@@ -16,10 +9,6 @@ import { signin, signup } from "../../actions/auth";
 
 import useStyles from "./styles";
 import { useHistory } from "react-router-dom";
-
-// require("dotenv").config();
-// import dotenv from "dotenv";
-// dotenv.config();
 
 const initialForm = {
   firstname: "",
@@ -89,50 +78,15 @@ const Auth = () => {
           <Grid container spacing={2}>
             {isSignUp && (
               <>
-                <Input
-                  name="firstname"
-                  label="First Name"
-                  handleChange={handleChange}
-                  autoFocus
-                  half
-                />
-                <Input
-                  name="lastname"
-                  label="Last Name"
-                  handleChange={handleChange}
-                  half
-                />
+                <Input name="firstname" label="First Name" handleChange={handleChange} autoFocus half />
+                <Input name="lastname" label="Last Name" handleChange={handleChange} half />
               </>
             )}
-            <Input
-              name="email"
-              label="Email Address"
-              handleChange={handleChange}
-              type="email"
-            />
-            <Input
-              name="password"
-              label="Password"
-              handleChange={handleChange}
-              type={showPass ? "text" : "password"}
-              handleShowPass={handleShowPass}
-            />
-            {isSignUp && (
-              <Input
-                name="confirmPassword"
-                label="Confrim Password"
-                handleChange={handleChange}
-                type="password"
-              />
-            )}
+            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+            <Input name="password" label="Password" handleChange={handleChange} type={showPass ? "text" : "password"} handleShowPass={handleShowPass} />
+            {isSignUp && <Input name="confirmPassword" label="Confrim Password" handleChange={handleChange} type="password" />}
           </Grid>
-          <Button
-            className={classes.submit}
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-          >
+          <Button className={classes.submit} type="submit" fullWidth variant="contained" color="primary">
             {isSignUp ? "Sign Up" : "Sign In"}
           </Button>
           <GoogleLogin

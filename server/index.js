@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 
-//import posts routes
+//import routes
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/users.js";
 
@@ -39,11 +39,7 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then(() =>
-    app.listen(PORT, () =>
-      console.log(`Server is successfully running on port: ${PORT}`)
-    )
-  )
+  .then(() => app.listen(PORT, () => console.log(`Server is successfully running on port: ${PORT}`)))
   .catch((err) => console.log(err));
 
 mongoose.connection
@@ -53,6 +49,3 @@ mongoose.connection
   .on("error", function (error) {
     console.log("Error is: ", error);
   });
-
-//avoid console warnings
-// mongoose.set("useFindAndModify", false);
